@@ -1,5 +1,6 @@
 TgCrypto
 Pyrogram
 motor
+aiohttp
 Flask
 Gunicorn
