@@ -2,5 +2,7 @@ TgCrypto
 Pyrogram
 motor
 aiohttp
+requests
+bs4
 Flask
 Gunicorn
