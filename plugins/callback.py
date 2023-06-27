@@ -38,7 +38,6 @@ async def handle_callback(bot : Client, query : CallbackQuery):
     if query.data == "home":
         await query.edit_message_text(
             text=START_TEXT.format(query.from_user.mention),
-            reply_markup=START_MARKUP,
             disable_web_page_preview=True,
             reply_markup=START_BUTTONS
         )
