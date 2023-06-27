@@ -35,17 +35,24 @@ async def refresh_cb(c, m):
 @Client.on_callback_query()
 async def handle_callback(bot : Client, query : CallbackQuery):
 
-    if query.data == "button1":
+    if query.data == "home":
         await query.edit_message_text(
-            text="You clicked Button 1!",
+            text=START_TEXT.format(query.from_user.mention),
             reply_markup=START_MARKUP,
             disable_web_page_preview=True,
+            reply_markup=START_BUTTONS
         )
-    elif query.data == "button2":
+    elif query.data == "help":
         await query.edit_message_text(
-            text="You clicked Button 2!"
+            text=HELP_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=HELP_BUTTONS
         )
-    elif query.data == "button3":
+    elif query.data == "about":
         await query.edit_message_text(
-            text="You clicked Button 3!"
+            text=ABOUT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=ABOUT_BUTTONS
         )
+    else:
+        await query.message.delete()
