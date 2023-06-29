@@ -11,3 +11,7 @@ START_MARKUP = InlineKeyboardMarkup(
     InlineKeyboardButton("Support", callback_data="button2")
     ]]
 )
+
+HELP_MSG = '''
+This Is Help Message
+'''
