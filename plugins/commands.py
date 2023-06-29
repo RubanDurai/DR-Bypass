@@ -7,7 +7,7 @@ from translation import *
 db = Database()
 
 # Define a command handler for /start
-@Client.on_message(filters.command("start"))
+@Client.on_message(filters.command("start") & filters.private)
 async def start_command(c: Client, m: Message):
     user_id = m.from_user.id
     await db.save_user(user_id)
@@ -15,18 +15,18 @@ async def start_command(c: Client, m: Message):
     s = START_TEXT.format(
         m.from_user.mention,
     )
-    keyboard = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton("Button 1", callback_data="button1"),
-        InlineKeyboardButton("Button 2", callback_data="button2"),
-        InlineKeyboardButton("Button 3", callback_data="button3")
-        ]]
-    )
-
     await m.reply_text(
         s, reply_markup=START_BUTTONS
         )
 
+@Client.on_message(filters.command("help") & filters.private)
+async def help_cmd(c: Client, m: Message):
+    await m.reply_text(HELP_TEXT)
+
+@Client.on_message(filters.command("about") & filters.private)
+async def about_cmd(c: Client, m: Message):
+    await m.reply_text(ABOUT_TEXT)
+    
 @Client.on_message(filters.command("stat") & filters.private)
 async def stats_handler(c: Client, m: Message):
     try:
