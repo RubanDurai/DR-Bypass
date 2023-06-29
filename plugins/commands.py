@@ -12,7 +12,7 @@ async def start_command(c: Client, m: Message):
     user_id = m.from_user.id
     await db.save_user(user_id)
 
-    s = START_MSG.format(
+    s = START_TEXT.format(
         m.from_user.mention,
     )
     keyboard = InlineKeyboardMarkup(
@@ -24,7 +24,7 @@ async def start_command(c: Client, m: Message):
     )
 
     await m.reply_text(
-        s, START_MSG, reply_markup=keyboard
+        s, reply_markup=START_BUTTONS
         )
 
 @Client.on_message(filters.command("stat") & filters.private)
