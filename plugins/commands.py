@@ -27,6 +27,10 @@ async def start_command(c: Client, m: Message):
         s, START_MSG, reply_markup=keyboard
         )
 
+@Client.on_message(filters.command("help") & filters.private)
+async def help_cmd(c: Client, m: Message):
+    m.reply_text(HELP_MSG)
+
 @Client.on_message(filters.command("stat") & filters.private)
 async def stats_handler(c: Client, m: Message):
     try:
